@@ -1,0 +1,4 @@
+--- 
+content_path: .left:text
+partials: 
+  menu: //div[@class='menu']/text()

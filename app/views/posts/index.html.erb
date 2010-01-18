@@ -1,0 +1,31 @@
+<h1>Wydarzenia</h1>
+
+<table>
+
+<% @posts.each do |post| %>
+  <tr>
+    <td><h2><%=h post.title %></h2></td>
+   </tr>
+   <tr>
+    <td><small><%=h post.date %></small></td>
+   </tr>
+   <tr>
+    <td><big><%=h post.description %></big></td>
+   </tr>
+<tr>
+   
+  <td><%= link_to 'Pokaż', post %>
+  <% if admin? %>
+    / <%= link_to 'Edytuj', edit_post_path(post) %> / 
+    <%= link_to 'Zniszcz', post, :confirm => 'Pewny?', :method => :delete %></td>
+  <% end %>
+  </tr>
+<tr><td><hr></td></tr>
+<% end %>
+</table>
+
+<br />
+<% if logged_in? %>
+  <%= link_to 'Nowy post', new_post_path %>
+<% end %>
+

@@ -1,0 +1,80 @@
+A<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	
+<!-- ==========================================================	-->
+<!--	Created by Devit Schizoper                          	-->
+<!--	Created HomePages http://LoadFoo.starzonewebhost.com   	-->
+<!--	Created Day 01.12.2006                              	-->
+<!-- ========================================================== -->
+
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta content="text/html;charset=utf-8" http-equiv="content-type" />
+	<meta name="author" content="LoadFoO" />
+	<meta name="description" content="Site description" />
+	<meta name="keywords" content="key, words" />
+	<title>BZIL</title>
+	<link href="/stylesheets/style.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="favicon.ico" rel="shortcut icon" />
+	<script src="/javascripts/textsizer.js" type="text/javascript"></script>
+	<script src="/javascripts/rel.js" type="text/javascript"></script>
+  <%= javascript_include_tag :all %>
+  <%= yield(:head) %>
+</head>
+
+<body>
+<div id="wrap">
+<div id="top">
+<h2><%= link_to "BZIL", posts_path %></h2>
+<div id="menu">
+<ul>
+<li><%= link_to "strona glowna", posts_path %></li>
+<% if logged_in? %>
+     <li><%= link_to 'dodaj wydarzenie', new_post_path %></li>
+ <% else %>
+     <li><%= link_to 'dodaj wydarzenie', login_path %></li>
+<% end %>
+<li><% if logged_in? %>
+      <%= link_to "wyloguj", logout_path %>
+   <% else %>
+      <%= link_to "zaloguj", login_path %>
+   <% end %>
+</li>
+<% if !logged_in? %>
+<li><%= link_to 'rejestracja', new_user_path %></li>
+<% end %>
+</ul>
+</div>
+</div>
+<div id="content">
+<div style="float: right;"><a href="javascript:ts('body',1)">[+]</a> | <a href="javascript:ts('body',-1)">[-]</a></div>
+<div id="left">
+  <%= yield %>
+</div>
+<div id="right">
+<ul id="nav">
+	<li><a href="#Home">Home</a></li>
+	<li><a href="#Archive">Archive</a></li>
+	<li><a href="#Link">Links</a></li>
+	<li><a href="#download">Download</a></li>
+	<li><a href="#support">Support</a></li>
+	<li><a href="#contact">Contact</a></li>
+</ul>
+	<div class="box">
+		<h2 style="margin-top:17px">Recent Entries</h2>
+		<ul>
+			<li><a href="#">Recent Entries1</a> <i>01 Des 06</i></li>
+			<li><a href="#">Recent Entries2</a> <i>01 Des 06</i></li>
+			<li><a href="#">Recent Entries3</a> <i>01 Des 06</i></li>
+			<li><a href="#">Recent Entries4</a> <i>01 Des 06</i></li>
+			<li><a href="#">Recent Entries5</a> <i>01 Des 06</i></li>
+		</ul>
+	</div>
+</div>
+<div id="clear"></div></div>
+<div id="footer">
+<p>Copyright 2006 LoadFoO [V1]. Designed by <a href="http://loadfoo.org/" rel="external">LoadFoO</a>. Valid <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="external">CSS</a> &amp; <a href="http://validator.w3.org/check?uri=referer" rel="external">XHTML</a></p>
+</div>
+</div>
+
+</body>
+</html>
